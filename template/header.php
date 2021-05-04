@@ -32,19 +32,38 @@ include_once "includes/dbh.inc.php";
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="" class="waves-effect waves-light btn-small"> Make an adoption Request</a></li>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="">Contact</a></li>
+                    <?php
+                    if(isset($_SESSION["useruid"])){
+                        echo'<li><a href="logout.php" class= "waves-effect waves-light btn-small red">Logout</a></li>';
+                        echo'<li><a href="requests.php">Requests</a></li>';
+                        echo'<li><a href="newanimal.php" class= "waves-effect waves-light btn-small red">Register new animal</a></li>';
+                    
+                    }  
+                     else{
+                        echo'<li><a href="login.php">Login</a></li>';
+                        echo'<li><a href="signup.php">Sign Up</a></li>';
+                    }
+                    ?>
                 </ul>
             </div>
         </nav>
     </div>
 
     <ul class="sidenav" id="mobile-links">
-        <li><a href="">Home</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="">Contact</a></li>
-    </ul>
+    <li><a href="index.php">Home</a></li>
+                    <?php
+                    if(isset($_SESSION["useruid"])){
+                        echo'<li><a href="logout.php" class= "waves-effect waves-light btn-small red">Logout</a></li>';
+                        echo'<li><a href="requests.php">Requests</a></li>';
+                        echo'<li><a href="newanimal.php" class= "waves-effect waves-light btn-small red">Register new animal</a></li>';
+                    
+                    }  
+                     else{
+                        echo'<li><a href="login.php">Login</a></li>';
+                        echo'<li><a href="signup.php">Sign Up</a></li>';
+                    }
+                    ?>
+                </ul>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

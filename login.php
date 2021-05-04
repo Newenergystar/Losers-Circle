@@ -5,7 +5,7 @@
   
   <div class="col s4 offset-s4">
   <section>
-    <div class="card indigo darken-1">
+    <div class="card indigo">
         <h4 class="center white-text"> Login </h4>
         <form action="includes/login.inc.php" method="post">
           <input type="text" name="uid" placeholder="Username/Email..." class="center">

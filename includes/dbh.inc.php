@@ -1,8 +1,8 @@
 <?php
-$servername = "cs2410-web01pvm.aston.ac.uk";
-$dBUsername = "u-190131063";
-$dBPassword = "aTnarBrzAnALxKP";
-$dBName = " u_190131063_db";
+$servername = "localhost";
+$dBUsername = "Test1";
+$dBPassword = "test12";
+$dBName = "adoption_animals";
 
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 
