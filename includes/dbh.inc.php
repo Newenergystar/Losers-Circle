@@ -1,19 +1,29 @@
-<?php
-//Get Heroku ClearDB connection information
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["us-cdbr-east-03.cleardb.com"];
-$cleardb_username = $cleardb_url["befc3846805b02"];
-$cleardb_password = $cleardb_url["8c27a32b"];
-$cleardb_db = substr($cleardb_url["heroku_fbc7c3b04eb92d5"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-// Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+<?php 
+    // Development Connection
+    // $host = '127.0.0.1';
+    // $db = 'attendance_db';
+    // $user = 'root';
+    // $pass = '';
+    // $charset = 'utf8mb4';
 
+    //Remote Database Connection
+    $host = 'cs2410-web01pvm.aston.ac.uk';
+    $db = 'u_190131063_db';
+    $user = 'u-190131063';
+    $pass = 'aTnarBrzAnALxKP';
+    $charset = 'utf8mb4';
 
-if (!$conn) {
-	die("Connection failed: ".mysqli_connect_error());
-}
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+    try{
+        $pdo = new PDO($dsn, $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    } catch(PDOException $e) {
+        throw new PDOException($e->getMessage());
+    }
+
+    require_once 'crud.php';
 ?>
 
 
