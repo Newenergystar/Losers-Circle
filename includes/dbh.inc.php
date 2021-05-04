@@ -1,29 +1,12 @@
-<?php 
-    // Development Connection
-    // $host = '127.0.0.1';
-    // $db = 'attendance_db';
-    // $user = 'root';
-    // $pass = '';
-    // $charset = 'utf8mb4';
+<?php
+$servername = "cs2410-web01pvm.aston.ac.uk";
+$dBUsername = "u-190131063";
+$dBPassword = "aTnarBrzAnALxKP";
+$dBName = " u_190131063_db";
 
-    //Remote Database Connection
-    $host = 'cs2410-web01pvm.aston.ac.uk';
-    $db = 'u_190131063_db';
-    $user = 'u-190131063';
-    $pass = 'aTnarBrzAnALxKP';
-    $charset = 'utf8mb4';
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-    try{
-        $pdo = new PDO($dsn, $user, $pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    } catch(PDOException $e) {
-        throw new PDOException($e->getMessage());
-    }
-
-    require_once 'crud.php';
+if (!$conn) {
+	die("Connection failed: ".mysqli_connect_error());
+}
 ?>
-
-
