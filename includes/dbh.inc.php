@@ -1,6 +1,6 @@
 <?php
 
-$servername = "https://cs2410-web01pvm.aston.ac.uk";
+$servername = "localhost";
 $dBUsername = "u-190131063";
 $dBPassword = "aTnarBrzAnALxKP";
 $dBName = " u_190131063_db";
