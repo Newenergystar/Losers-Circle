@@ -1,5 +1,9 @@
 <?php
 
+
+
+///////////////////////////////////USER SIGN UP FUNCTIONS////////////////////////////////////
+
 // Check for empty input signup
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
 	$result = true;
@@ -11,6 +15,8 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
 	}
 	return $result;
 }
+
+
 
 // Check invalid username
 function invalidUid($username) {
@@ -60,7 +66,6 @@ function uidExists($conn, $username) {
 	mysqli_stmt_bind_param($stmt, "ss", $username, $username);
 	mysqli_stmt_execute($stmt);
 
-	// "Get result" returns the results from a prepared statement
 	$resultData = mysqli_stmt_get_result($stmt);
 
 	if ($row = mysqli_fetch_assoc($resultData)) {
@@ -106,6 +111,8 @@ function emptyInputLogin($username, $pwd) {
 	return $result;
 }
 
+/////////////////////////////////////// USER LOGIN FUNCTIONS ////////////////////////////////////////////////////
+
 // Log user into website
 function loginUser($conn, $username, $pwd) {
 	$uidExists = uidExists($conn, $username);
@@ -123,10 +130,83 @@ function loginUser($conn, $username, $pwd) {
 		exit();
 	}
 	elseif ($checkPwd === true) {
+		if(isset($uidExists["usersId"])) {
 		session_start();
 		$_SESSION["userid"] = $uidExists["usersId"];
-		$_SESSION["useruid"] = $uidExists["usersUid"];
+		$_SESSION["name"] = $uidExists["usersName"];
+		$_SESSION["useremail"] = $uidExists["usersEmail"];
+
+
+		if ($uidExists["AdminVer"] === 'True')
+	    $_SESSION["admin"] = $uidExists["AdminVer"];
+		
+		}	
+
 		header("location: ../index.php?error=none");
 		exit();
 	}
 }
+///////////////////////////////////////////////////////////////////////////////////REPORT FUNCTIONS//////////////////////////////////////////////////////////////////////
+
+
+function EmptyReportInput( $item_name,  $item_description, $item_finder,  $item_picture, $item_date, $item_catagory) {
+	$result = true;
+	if (empty($item_name) || empty($item_description) || empty($item_description) || empty( $item_finder) || empty($item_picture) || empty($item_date) || empty( $item_catagory)){
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
+function invaiditemname($item_name) {
+	$result = true;
+	if (!preg_match("/^[a-zA-Z0-9]*$/", $item_name)) {
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
+function InsertItem($conn, $item_name, $item_description, $item_finder, $item_picture, $item_date, $item_catagory, $item_location) {
+
+	$sql = "INSERT INTO lost_items (item_name, item_description, item_finder, item_picture, item_date, item_catagory, item_location) VALUES (?, ?, ?, ?,?,?,?);";
+  
+	  $stmt = mysqli_stmt_init($conn);
+	  if (!mysqli_stmt_prepare($stmt, $sql)) {
+		   header("location: ../Report_items.php?error=stmtfailed");
+		  exit();
+	  }
+  
+	  mysqli_stmt_bind_param($stmt, "sssssss", $item_name, $item_description, $item_finder, $item_picture, $item_date, $item_catagory, $item_location);
+	  mysqli_stmt_execute($stmt);
+	  mysqli_stmt_close($stmt);
+	  mysqli_close($conn);
+	  header("location: ../index.php?error=reportdone");
+	  exit();
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////// CLAIM FUNCTIONS/////////////
+
+
+  
+function InsertClaim($conn, $item, $name, $claimreason, $itemname, $itempic)  {
+
+	$sql = "INSERT INTO claim (Item_Cid, Item_claimer, Item_Creason, Item_name, Item_picture) VALUES (?, ?, ?, ?, ?);";
+  
+	  $stmt = mysqli_stmt_init($conn);
+	  if (!mysqli_stmt_prepare($stmt, $sql)) {
+		   header("location: ../Report_items.php?error=stmtfailed");
+		  exit();
+	  }
+  
+	  mysqli_stmt_bind_param($stmt, "sssss", $item, $name, $claimreason, $itemname, $itempic);
+	  mysqli_stmt_execute($stmt);
+	  mysqli_stmt_close($stmt);
+	  mysqli_close($conn);
+	  header("location: ../index.php?error=Claimmade");
+	  exit();
+  }

@@ -1,9 +1,11 @@
 <?php include('template/header.php') ?>
 
-<!-- Login HTML -->
+
+<!-- Login form -->
+<br><br><br><br>
 <div class="row">
   
-  <div class="col s4 offset-s4">
+  <div class="col s3 offset-s4">
   <section>
     <div class="card indigo">
         <h4 class="center white-text"> Login </h4>
@@ -13,7 +15,7 @@
           <br>
           <br>
           <div class="center">
-            <input type="submit" name="submit" class="btn green brand">
+            <input type="submit" name="login" class="btn green brand">
           </div>
           <br>
         </form>
@@ -40,6 +42,6 @@
   </div>
 </div>
 
-
+<br><br><br><br><br><br><br><br><br><br><br>
 
 <?php include('template/footer.php') ?>
