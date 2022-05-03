@@ -25,7 +25,7 @@ if (!isset($_SESSION["userid"])) {
   <div class="center-align">
   <section>
   <div class="card indigo center">
-      <h4 class="center white-text"> PLEASE LOGIN TO VIEW ITEMS </h4>
+      <h4 class="center white-text"> PLEASE LOGIN TO REPORT ITEMS </h4>
       </section>
       </div>
       

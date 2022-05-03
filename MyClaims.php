@@ -57,6 +57,7 @@ if($resultCheck > 0){
                 <div class="col s3 offset-s1">
                 <section>
                 <div class="card indigo center">
+                <br>
                     <h4 class="center white-text"> Your claim request is being processed </h4>
                     <br>
                     </section>
@@ -81,6 +82,7 @@ if($resultCheck > 0){
                 <div class="col s3 offset-s1">
                 <section>
                 <div class="card green center">
+                <br>
                     <h4 class="center white-text"> Your claim request was successful </h4>
                     <br>
                     </section>
@@ -106,6 +108,7 @@ if($resultCheck > 0){
                 <div class="col s3 offset-s1">
                 <section>
                 <div class="card red center">
+                <br>
                     <h4 class="center white-text"> Your claim request is was rejected </h4>
                     <br>
                     </section>
@@ -134,5 +137,11 @@ if($resultCheck > 0){
 }
 ?>
 
+
+<br>
+
+<br><br>
+<br><br><br><br>
+<br>
 
 <?php include('template/footer.php') ?>

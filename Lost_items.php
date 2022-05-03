@@ -39,7 +39,7 @@ if (!isset($_SESSION["userid"])) {
               <span class="card-title white">Found on: '.$row['item_date'].'</span>
             </div>
             <div class="card-content">
-              <p> item desctiption: <br>'.$row['item_description'].'</p>
+              <p> Item desctiption: <br>'.$row['item_description'].'</p>
             </div>
 
             </div>
@@ -83,12 +83,12 @@ if($resultCheck > 0){
               <span class="card-title white">Found on: '.$row['item_date'].'</span>
             </div>
             <div class="card-content">
-              <p> item desctiption: <br>'.$row['item_description'].'</p>
+              <p> Item desctiption: <br>'.$row['item_description'].'</p>
             </div>
           
             <form action="includes/claim.inc.php" method="post">
             <h4 class= "center" > CLAIM ITEM </h4>
-            <span> Item id </span>
+            
             <input type= "hidden"  name="Item_id" value= "'.$row['Item_id'].'  " readonly="readonly">
             <input type= "hidden"  name="Item_name" value= "'.$row['Item_name'].'  " readonly="readonly">
             <input type= "hidden"  name="Item_picture" value= "'.$row['item_picture'].'  " readonly="readonly">

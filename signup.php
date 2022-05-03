@@ -1,4 +1,38 @@
 <?php include('template/header.php') ?>
+
+
+
+<?php
+
+
+if (isset($_SESSION["userid"])) {
+    
+    echo '  
+    <p class= "center"> YOU ARE AREADY LOGGED IN <br> <br></p>
+  
+  
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+      <div class="w3-content">
+        <div class="w3-third w3-center">
+        <li><img src="img/Capture.PNG"  width="300" height="200" style ="margin-top: 12px" alt="" class="responsive-img user" /></li>
+        </div>
+    
+        <div class="w3-twothird center">
+          <h3>ASTROWORLD X LOSERS CIRCLE</h3>
+          <h5 class="w3-padding-32 center"> Every year thousands of people lose their items at astroworld, with Losers Circle you can claim and report lost items.</h5>
+    
+          <p class="w3-text-grey"> </p>
+        </div>
+      </div>
+    </div>
+  ';
+
+  exit();
+  }
+
+  ?>
+
+
 <!-- Sign up HTML-->
 <br><br><br><br>
 <div class="row">

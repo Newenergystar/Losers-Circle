@@ -9,7 +9,7 @@ require_once 'functions.inc.php';
 if (isset($_POST["report"])) {
   
 
-    session_start();
+   
     $itemp = $_POST["Item_id"];
 
   $name = $_SESSION['userid'];

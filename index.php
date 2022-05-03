@@ -40,6 +40,7 @@ if (isset($_SESSION["admin"])){
         } else if ($_GET["error"] == "reportdone") {
           echo "<div class=\"card-panel green \">
           <span class=\"white-text \"> Item Sucessfully Reported, Report another Item? </span>
+          </div>
       ";
       } 
     }
